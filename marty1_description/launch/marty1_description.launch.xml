@@ -1,0 +1,8 @@
+<launch>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" exec="robot_state_publisher">
+    <param name='robot_description' type="str" value="$(command 'cat $(find-pkg-share marty1_description)/urdf/marty.urdf')"/>
+    <param name='static_publish_frequency' value="10.0"/>
+  </node>
+
+  <node pkg="joint_state_publisher" exec="joint_state_publisher" name="joint_state_publisher"/>
+</launch>

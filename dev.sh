@@ -68,6 +68,7 @@ docker run -it --rm --net host \
     -v /dev:/dev \
     -v /tmp:/tmp \
     -v /etc/localtime:/etc/localtime:ro \
+    -v ./marty1_description:/opt/ros_ws/src/marty1_description \
     -v ./marty2_description:/opt/ros_ws/src/marty2_description \
     $CYCLONE_VOL \
     marty2_description:latest-dev
