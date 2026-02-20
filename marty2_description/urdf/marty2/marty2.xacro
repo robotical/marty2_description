@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<robot name="marty2" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- Shared includes -->
+  <!-- <xacro:include filename="$(find marty2_description)/urdf/marty2/marty2_params.xacro"/> -->
+
+  <!-- Main structure -->
+  <xacro:include filename="$(find marty2_description)/urdf/marty2/marty2_structure.xacro"/>
+  
+  <!-- Bolt-on sensors go here -->
+  <!-- <xacro:include filename="$(find marty2_description)/urdf/marty2/marty2_sensors.xacro"/> -->
+</robot>
