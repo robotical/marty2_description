@@ -6,6 +6,7 @@ RUN apt-get update \
         apt-get -y --quiet --no-install-recommends install \
         ros-"$ROS_DISTRO"-xacro \
         ros-"$ROS_DISTRO"-joint-state-publisher \
+        ros-"$ROS_DISTRO"-robot-state-publisher \
         # Install Cyclone DDS ROS RMW
         ros-"$ROS_DISTRO"-rmw-cyclonedds-cpp \
     && rm -rf /var/lib/apt/lists/*
@@ -24,11 +25,6 @@ ENV CYCLONEDDS_URI=file://${ROS_WS}/cyclone_dds.xml
 
 # Enable ROS log colorised output
 ENV RCUTILS_COLORIZED_OUTPUT=1
-
-# Clone custom robot state_publisher
-RUN git clone -b tartan-humble \
-    https://github.com/ipab-rad/robot_state_publisher.git \
-    "$ROS_WS"/src/robot_state_publisher
 
 # -----------------------------------------------------------------------
 
