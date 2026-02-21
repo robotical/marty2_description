@@ -2,12 +2,70 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:include filename="$(find marty2_description)/urdf/fixed.xacro"/>
   <xacro:include filename="$(find marty2_description)/urdf/materials.xacro"/>
+  <xacro:include filename="$(find marty2_description)/urdf/revolute.xacro"/>
 
   <link name="base_link"/>
 
   <!-- Main Structure -->
-  <xacro:fixed name="martyV2-head" parent="base_link" material="blue">
+
+  <xacro:fixed name="head" parent="base_link" material="blue" mesh="head">
     <origin xyz="0 0 0" rpy="0 0 0"/>
+  </xacro:fixed>
+
+  <xacro:fixed name="side_panel_left" parent="head" material="yellow" mesh="side_panel">
+    <origin xyz="0.0025 0.05744  0.04221" rpy="-0.0361 0 0"/>
+  </xacro:fixed>
+
+  <xacro:fixed name="side_panel_right" parent="head" material="yellow" mesh="side_panel" mesh_yaw="3.1416">
+    <origin xyz="0.0025 -0.05744 0.04221" rpy="0.0361 0 0"/>
+  </xacro:fixed>
+
+  <!-- Eyes -->
+
+  <xacro:revolute name="eye_left" parent="head" material="white" mesh="eye_left" rot_r="1">
+    <origin xyz="0.04570 0.02410 0.04671" rpy="0 0 0"/>
+  </xacro:revolute>
+
+  <xacro:revolute name="eye_right" parent="head" material="white" mesh="eye_right" rot_r="1">
+    <origin xyz="0.04570 -0.02410 0.04671" rpy="0 0 0"/>
+  </xacro:revolute>
+
+  <!-- Arms -->
+
+  <xacro:revolute name="arm_servo_gear_left" parent="side_panel_left" material="yellow" mesh_pitch="-0.5585" mesh="arm_servo_gear" rot_p="1">
+    <origin xyz="0 0.00025 0" rpy="0 0 0"/>
+    <!-- <mimic joint="arm_servo_gear_left_joint" multiplier="0"/> -->
+  </xacro:revolute>
+
+  <xacro:revolute name="arm_servo_gear_right" parent="side_panel_right" material="yellow" mesh="arm_servo_gear" mesh_pitch="-0.5585" mesh_yaw="3.1416" rot_p="1">
+    <origin xyz="0 -0.00025 0" rpy="0 0 0"/>
+    <!-- <mimic joint="arm_servo_gear_right_joint" multiplier="0"/> -->
+  </xacro:revolute>
+
+  <xacro:revolute name="arm_left" parent="side_panel_left" material="yellow" mesh="arm" rot_p="1">
+    <origin xyz="0 0 -0.03020" rpy="0 0 0"/>
+  </xacro:revolute>
+
+  <xacro:fixed name="hand_left" parent="arm_left" material="yellow" mesh="hand">
+    <origin xyz="0.00000 0.0330 -0.05539" rpy="0.3490658504 0 0"/>
+  </xacro:fixed>
+
+  <xacro:revolute name="arm_right" parent="side_panel_right" material="yellow" mesh="arm" mesh_yaw="3.1416" rot_p="1">
+    <origin xyz="0 0 -0.03020" rpy="0 0 0"/>
+  </xacro:revolute>
+
+  <xacro:fixed name="hand_right" parent="arm_right" material="yellow" mesh="hand">
+    <origin xyz="0.00000 -0.0330 -0.05539" rpy="-0.3490658504 0 0"/>
+  </xacro:fixed>
+
+  <!-- Legs -->
+
+  <xacro:fixed name="hip_left" parent="head" material="blue" mesh="hip">
+    <origin xyz="0.01087 0.04709 -0.01465" rpy="0.0000 0.0000 0.0000"/>
+  </xacro:fixed>
+
+  <xacro:fixed name="hip_right" parent="head" material="blue" mesh="hip">
+    <origin xyz="0.01087 -0.00941 -0.01465" rpy="0.0000 0.0000 0.0000"/>
   </xacro:fixed>
 
 </robot>

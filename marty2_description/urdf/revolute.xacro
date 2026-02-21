@@ -1,10 +1,12 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="revolute" params="name parent material *origin">
+  <xacro:macro name="revolute" params="name parent material mesh mesh_pitch:=0 mesh_yaw:=0 rot_r:=0 rot_p:=0 rot_y:=0 *origin">
     <joint name="${name}_joint" type="revolute">
       <xacro:insert_block name="origin"/>
       <parent link="${parent}"/>
       <child link="${name}"/>
+      <axis xyz="${rot_r} ${rot_p} ${rot_y}"/>
+      <limit effort="30" velocity="1.0" lower="-1.0" upper="1.0" />
     </joint>
     <link name="${name}">
       <inertial>
@@ -14,16 +16,16 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="http://0.0.0.0:8000/${name}.stl"/>
+          <mesh filename="http://0.0.0.0:8000/${mesh}.stl"/>
         </geometry>
-        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0 ${mesh_pitch} ${mesh_yaw}"/>
         <material name="${material}"/>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="http://0.0.0.0:8000/${name}.stl"/>
+          <mesh filename="http://0.0.0.0:8000/${mesh}.stl"/>
         </geometry>
-        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0 ${mesh_pitch} ${mesh_yaw}"/>
         <material name="${material}"/>
       </collision>
     </link>
