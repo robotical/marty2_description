@@ -1,4 +1,4 @@
-FROM ros:humble-ros-base-jammy AS base
+FROM ros:jazzy-ros-base-noble AS base
 
 # Install key dependencies
 RUN apt-get update \
@@ -7,6 +7,12 @@ RUN apt-get update \
         ros-"$ROS_DISTRO"-xacro \
         ros-"$ROS_DISTRO"-joint-state-publisher \
         ros-"$ROS_DISTRO"-robot-state-publisher \
+        # Required for ROS2 Control
+        ros-"$ROS_DISTRO"-controller-manager \
+        ros-"$ROS_DISTRO"-joint-state-broadcaster \
+        ros-"$ROS_DISTRO"-ros2-control \
+        ros-"$ROS_DISTRO"-ros2-controllers \
+        ros-"$ROS_DISTRO"-ros2-controllers-test-nodes \
         # Install Cyclone DDS ROS RMW
         ros-"$ROS_DISTRO"-rmw-cyclonedds-cpp \
     && rm -rf /var/lib/apt/lists/*
