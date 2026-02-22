@@ -23,14 +23,14 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="http://0.0.0.0:8000/${mesh}.stl"/>
+          <mesh filename="package://marty2_description/meshes/${mesh}.stl"/>
         </geometry>
         <origin xyz="${mesh_x} ${mesh_y} 0" rpy="${mesh_roll} ${mesh_pitch} ${mesh_yaw}"/>
         <material name="${material}"/>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="http://0.0.0.0:8000/${mesh}.stl"/>
+          <mesh filename="package://marty2_description/meshes/${mesh}.stl"/>
         </geometry>
         <origin xyz="${mesh_x} ${mesh_y} 0" rpy="${mesh_roll} ${mesh_pitch} ${mesh_yaw}"/>
         <material name="${material}"/>
