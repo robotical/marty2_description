@@ -8,6 +8,8 @@ BASH_CMD=""
 
 # Default cyclone_dds.xml path
 CYCLONE_DIR=/home/$USER/cyclone_dds.xml
+# Default value for headless
+headless=false
 
 # Function to print usage
 usage() {
@@ -18,6 +20,7 @@ Where:
     -b | bash       Open bash in docker container (Default in dev.sh)
     -l | --local    Use default local cyclone_dds.xml config
     -l | --local    Optionally point to absolute -l /path/to/cyclone_dds.xml
+    --headless      Run the Docker image without X11 forwarding
     -h | --help     Show this help message
     "
     exit 1
@@ -39,6 +42,7 @@ while [[ "$#" -gt 0 ]]; do
             fi
             CYCLONE_VOL="-v $CYCLONE_DIR:/opt/ros_ws/cyclone_dds.xml"
             ;;
+        --headless) headless=true ;;
         -h|--help)
             usage
             ;;
@@ -58,13 +62,22 @@ if [ -n "$CYCLONE_VOL" ]; then
     fi
 fi
 
+MOUNT_X=""
+if [ "$headless" = "false" ]; then
+    MOUNT_X="-e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix"
+    xhost + >/dev/null
+fi
+
 # Build docker image up to dev stage
 DOCKER_BUILDKIT=1 docker build \
     -t marty2_description:latest-dev \
     -f Dockerfile --target dev .
 
 # Run docker image with local code volumes for development
-docker run -it --rm --net host \
+docker run -it --rm --net host --privileged\
+    ${MOUNT_X} \
+    -e XAUTHORITY="${XAUTHORITY}" \
+    -e XDG_RUNTIME_DIR="$XDG_RUNTIME_DIR" \
     -v /dev:/dev \
     -v /tmp:/tmp \
     -v /etc/localtime:/etc/localtime:ro \

@@ -3,6 +3,8 @@ Marty v2 description including the URDF and mesh files for the Marty robot v2 (R
 
 ![Foxglove_Demo](imgs/Foxglove_Marty_v2.png)
 ![CoppeliaSim_Demo](imgs/CoppeliaSim_Marty_v2.png)
+![RVIZ2_Demo](imgs/RViz2_Marty_v2.png)
+![ROS2_Control_Demo](imgs/ROS2_Control_loop.gif)
 
 ## Usage
 
