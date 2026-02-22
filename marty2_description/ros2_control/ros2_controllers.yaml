@@ -17,12 +17,12 @@ joint_trajectory_position_controller:
       - eye_left_joint
       - arm_servo_gear_left_joint
       - arm_servo_gear_right_joint
-      - leg_left_thigh_front_joint
-      - leg_right_thigh_front_joint
-      - leg_left_twist_lower_joint
-      - leg_right_twist_lower_joint
-      - leg_left_shin_exterior_joint
-      - leg_right_shin_interior_joint
+      - leg_left_thigh_joint
+      - leg_right_thigh_joint
+      - leg_left_twist_joint
+      - leg_right_twist_joint
+      - leg_left_shin_joint
+      - leg_right_shin_joint
 
     command_interfaces:
       - position

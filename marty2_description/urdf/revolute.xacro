@@ -1,8 +1,11 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:macro name="revolute" params="name parent material mesh mesh_x:=0 mesh_y:=0 mesh_roll:=0 mesh_pitch:=0 mesh_yaw:=0 rot_r:=0 rot_p:=0 rot_y:=0 mimic_joint:='' mimic_mult:='' *origin *limit">
-    <joint name="${name}_joint" type="revolute">
+  <xacro:macro name="revolute" params="name parent material joint_name:='' mesh mesh_x:=0 mesh_y:=0 mesh_roll:=0 mesh_pitch:=0 mesh_yaw:=0 rot_r:=0 rot_p:=0 rot_y:=0 mimic_joint:='' mimic_mult:='' *origin *limit">
+  <xacro:if value="${joint_name == ''}">
+    <xacro:property name="joint_name" value="${name}_joint"/>
+  </xacro:if>
+    <joint name="${joint_name}" type="revolute">
       <xacro:insert_block name="origin"/>
       <parent link="${parent}"/>
       <child link="${name}"/>
