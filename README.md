@@ -1,6 +1,9 @@
 # marty2_description
 Marty v2 description including the URDF and mesh files for the Marty robot v2 (Robotical)
 
+![Foxglove_Demo](imgs/Foxglove_Marty_v2.png)
+![CoppeliaSim_Demo](imgs/CoppeliaSim_Marty_v2.png)
+
 ## Usage
 
 This repository is designed to be used alongside a Docker container. Quickly build and run the Docker container using `runtime.sh` for runtime or debugging, and `dev.sh` for a convenient development setup.
