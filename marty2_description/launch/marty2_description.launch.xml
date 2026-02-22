@@ -1,9 +1,9 @@
 <launch>
   <node name="robot_state_publisher" pkg="robot_state_publisher" exec="robot_state_publisher">
-    <!-- <param name='robot_description' type="str" value="$(command 'cat $(find-pkg-share marty2_description)/urdf/marty.urdf')"/> -->
+
     <param name='robot_description' type="str" value="$(command 'xacro $(find-pkg-share marty2_description)/urdf/marty2/marty2.xacro')"/>
-    <param name='static_publish_frequency' value="10.0"/>
+    <param name='static_publish_frequency' value="200.0"/>
+    
   </node>
 
-  <node pkg="joint_state_publisher" exec="joint_state_publisher" name="joint_state_publisher"/>
 </launch>

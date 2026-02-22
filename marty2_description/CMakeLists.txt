@@ -11,6 +11,8 @@ find_package(ament_cmake_ros REQUIRED)
 
 install(DIRECTORY urdf DESTINATION share/${PROJECT_NAME})
 
+install(DIRECTORY ros2_control DESTINATION share/${PROJECT_NAME})
+
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
 
 ament_package()

@@ -1,13 +1,16 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="revolute" params="name parent material mesh mesh_roll:=0 mesh_pitch:=0 mesh_yaw:=0 rot_r:=0 rot_p:=0 rot_y:=0 *origin *mimic *limit">
+
+  <xacro:macro name="revolute" params="name parent material mesh mesh_x:=0 mesh_y:=0 mesh_roll:=0 mesh_pitch:=0 mesh_yaw:=0 rot_r:=0 rot_p:=0 rot_y:=0 mimic_joint:='' mimic_mult:='' *origin *limit">
     <joint name="${name}_joint" type="revolute">
       <xacro:insert_block name="origin"/>
       <parent link="${parent}"/>
       <child link="${name}"/>
       <axis xyz="${rot_r} ${rot_p} ${rot_y}"/>
-      <xacro:insert_block name="mimic"/>
-      <xacro:insert_block name="limit"/>
+      <xacro:if value="${mimic_joint != ''}">
+        <mimic joint="${mimic_joint}" multiplier="${mimic_mult}"/>
+      </xacro:if>
+      <xacro:insert_block name="limit" />
     </joint>
     <link name="${name}">
       <inertial>
@@ -19,14 +22,14 @@
         <geometry>
           <mesh filename="http://0.0.0.0:8000/${mesh}.stl"/>
         </geometry>
-        <origin xyz="0 0 0" rpy="${mesh_roll} ${mesh_pitch} ${mesh_yaw}"/>
+        <origin xyz="${mesh_x} ${mesh_y} 0" rpy="${mesh_roll} ${mesh_pitch} ${mesh_yaw}"/>
         <material name="${material}"/>
       </visual>
       <collision>
         <geometry>
           <mesh filename="http://0.0.0.0:8000/${mesh}.stl"/>
         </geometry>
-        <origin xyz="0 0 0" rpy="${mesh_roll} ${mesh_pitch} ${mesh_yaw}"/>
+        <origin xyz="${mesh_x} ${mesh_y} 0" rpy="${mesh_roll} ${mesh_pitch} ${mesh_yaw}"/>
         <material name="${material}"/>
       </collision>
     </link>

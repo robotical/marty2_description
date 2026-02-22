@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node pkg="ros2_controllers_test_nodes"
+        exec="publisher_joint_trajectory_controller"
+        name="publisher_joint_trajectory_controller"
+        output="both">
+
+    <param from="$(find-pkg-share marty2_description)/ros2_control/trajectory_commands.yaml"/>
+
+  </node>
+
+</launch>

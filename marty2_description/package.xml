@@ -10,9 +10,13 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
+  <depend>joint_state_broadcaster</depend>
   <depend>joint_state_publisher</depend>
   <depend>robot_state_publisher</depend>
   <depend>xacro</depend>
+
+  <depend>controller_manager</depend>
+  <depend>forward_command_controller</depend>
 
   <export>
     <build_type>ament_cmake</build_type>
