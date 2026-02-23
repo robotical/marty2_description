@@ -1,5 +1,4 @@
 <launch>
-
   <include file="$(find-pkg-share marty2_description)/launch/marty2_description.launch.xml"/>
 
   <node pkg="controller_manager" exec="ros2_control_node" output="both">
@@ -7,12 +6,7 @@
     <remap from="~/robot_description" to="/robot_description"/>
   </node>
 
-  <node pkg="controller_manager"
-        exec="spawner"
-        args="joint_state_broadcaster" />
+  <node pkg="controller_manager" exec="spawner" args="joint_state_broadcaster"/>
 
-  <node pkg="controller_manager"
-        exec="spawner"
-        args="joint_trajectory_position_controller" />
-
+  <node pkg="controller_manager" exec="spawner" args="joint_trajectory_position_controller"/>
 </launch>

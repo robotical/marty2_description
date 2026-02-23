@@ -9,8 +9,7 @@
   <!-- Bolt-on sensors go here -->
   <!-- <xacro:include filename="$(find marty2_description)/urdf/marty2/marty2_sensors.xacro"/> -->
 
-  <xacro:include filename="$(find marty2_description)/ros2_control/marty2.ros2_control.xacro" />
-  
-  <xacro:marty2_ros2_control name="marty2"/>
+  <xacro:include filename="$(find marty2_description)/ros2_control/marty2.ros2_control.xacro"/>
 
+  <xacro:marty2_ros2_control name="marty2"/>
 </robot>
