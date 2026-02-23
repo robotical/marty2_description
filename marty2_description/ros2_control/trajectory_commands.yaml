@@ -2,17 +2,28 @@ publisher_joint_trajectory_controller:
   ros__parameters:
 
     controller_name: "joint_trajectory_position_controller"
-    wait_sec_between_publish: 2
+    wait_sec_between_publish: 4
 
-    goal_names: ["pos1", "pos2", "pos3", "pos4"]
+    goal_names: ["pos1", "pos2", "pos3", "pos4", "pos5", "pos6", "pos7", "pos8", "pos9"]
     pos1:
-      positions: [0.2, -0.95, 2.05, -1.0, 1.0, 1.0, 1.0, 2.0, 1.0]
+      positions: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
     pos2:
-      positions: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+      positions: [0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.6, -1.0]
     pos3:
-      positions: [-0.5, 2.05, -0.95, 1.0, -1.0, -1.0, -1.0, -1.0, -2.0]
+      positions: [-0.1, 0.7, -0.7, 0.7, -0.7, 0.0, 0.0, 0.0, 0.0]
     pos4:
-      positions: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+      positions: [0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.6]
+    pos5:
+      positions: [-0.1, -0.7, 0.7, -0.7, 0.7, 0.0, 0.0, 0.0, 0.0]
+    pos6:
+      positions: [0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.6, -1.0]
+    pos7:
+      positions: [-0.1, 0.7, -0.7, 0.7, -0.7, 0.0, 0.0, 0.0, 0.0]
+    pos8:
+      positions: [0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.6]
+    pos9:
+      positions: [-0.1, -0.7, 0.7, -0.7, 0.7, 0.0, 0.0, 0.0, 0.0]
+    # [eye_l, arm_l, arm_r, l_thigh, r_thigh, l_twist, r_twist, l_shin, r_shin]
 
     joints:
       - eye_left_joint
