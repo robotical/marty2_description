@@ -68,7 +68,7 @@ repos:
 
   # Check Github files
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.36.1
+    rev: 0.37.0
     hooks:
       - id: check-github-workflows
         args: ["--verbose"]
@@ -85,7 +85,7 @@ repos:
 
   # ROS checks
   - repo: https://github.com/tier4/pre-commit-hooks-ros
-    rev: v0.10.0
+    rev: v0.10.2
     hooks:
       - id: flake8-ros
       - id: prettier-xacro
